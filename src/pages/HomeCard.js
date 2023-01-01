@@ -5,11 +5,11 @@ import Pegation from '../components/Pegation';
 import { useFetch } from '../hooks/useFetch';
 
 const HomeCard = () => {
-    let [pageNumber, updatePageNumber] = useState(1);
-    const [url, setUrl] = useState(`https://rickandmortyapi.com/api/character?page=${pageNumber}`)
-    const {data  , isPending , error}=useFetch(url)
+    let [pageNumber, setPageNumber] = useState(1);
+    let [search, setSearch] = useState("");
+    const {data  , isPending , error}=useFetch(`https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`)
     let { results , info } = data;
-    
+    document.title="HomePage"
     return (
         <div>
            {isPending && 
@@ -25,7 +25,7 @@ const HomeCard = () => {
                     <CharList user={chars}  key={chars.id} />
           )}    
           </div>
-          <Pegation info={info}  setUrl={setUrl}  flag="home"/>
+          <Pegation info={info}   pageNumber={pageNumber} setPageNumber={setPageNumber}/>
       </Container>
         </div>
     );

@@ -9,6 +9,7 @@ import "./profile.css"
 
 const Profile = () => {
     let user_id = window.location.pathname.split("/")[2]
+    user_id=user_id.split("-")[0]
     const navigate = useNavigate()
     const url = `https://rickandmortyapi.com/api/character/${user_id}`
     const { data, isPending, error } = useFetch(url)
@@ -34,7 +35,7 @@ const Profile = () => {
  
 
 
-
+document.title= `${data.name}'s profile page`
     return (
        
         <div> 
@@ -67,7 +68,7 @@ const Profile = () => {
                                                     <li className="mb-2 mb-xl-3 display-28"><span className="display-26 text-secondary me-2 font-weight-600">Gender:</span> {data.gender}</li>
                                                     <li className="mb-2 mb-xl-3 display-28"><span className="display-26 text-secondary me-2 font-weight-600">Location:</span> { data?.location?.name}</li>
                                                 </ul>
-                                                <Link to='/' className='btn btn-primary' >Back to   Home</Link>
+                                                <Link to='/' className='btn btn-primary back' >Back to   Home</Link>
                                             </div>
                                         </div>
                                     </div>

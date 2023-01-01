@@ -17,7 +17,7 @@ const Menu = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link to="/">Home</Nav.Link>
+              <Link to="/" className='text-decoration-none text-dark nav-link'>Home</Link>
             </Nav>
             <SearchBar / >
           </Navbar.Collapse>
